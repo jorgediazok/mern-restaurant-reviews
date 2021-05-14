@@ -3,7 +3,7 @@ const path = require('path');
 require('dotenv').config({ path: path.resolve(__dirname, './.env') });
 const cors = require('cors');
 const mongoose = require('mongoose');
-const restaurants = require('./routes/restaurants');
+const userRoute = require('./routes/userRoutes');
 
 const app = express();
 
@@ -11,7 +11,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use('/api/v1/restaurants', restaurants);
+app.use('/', userRoute);
 app.use('*', (req, res) => res.status(404).json({ error: 'not found' }));
 
 //MongoDB
